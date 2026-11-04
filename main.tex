@@ -1,0 +1,178 @@
+\documentclass[a4paper,12pt,oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{times}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{tocloft}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{comment}
+\usepackage{physics}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% Page Geometry: 1" top, bottom, right; 1.5" left margin
+\geometry{a4paper, tmargin=1in, rmargin=1in, bmargin=1in, lmargin=1.5in}
+
+% Line Spacing: 1.5 throughout
+\onehalfspacing
+
+%-----------------------------------------
+% Project Metadata & Configuration
+%-----------------------------------------
+\newcommand{\projecttitle}{Policy-Governed On-Device LLM Agents for Secure Mobile Automation}
+\newcommand{\projectid}{PID - 24}
+\newcommand{\studentone}{Mekala Karthik}
+\newcommand{\studenttwo}{Mohammed Muqeet}
+\newcommand{\rollone}{160123729046}
+\newcommand{\rolltwo}{160123729047}
+\newcommand{\projectdept}{Department of Computer Science \& Engineering (AI \& ML)}
+\newcommand{\projectguide}{Dr. Prabhakar Kandukuri}
+\newcommand{\guidetitle}{Professor, Department of CSE (AI \& ML)}
+\newcommand{\depthod}{Dr. Y. Ramadevi}
+\newcommand{\college}{Chaitanya Bharathi Institute of Technology (Autonomous)}
+\newcommand{\location}{Gandipet, Hyderabad, Telangana - 500075}
+\newcommand{\academicyear}{2026--2027}
+
+% Listings formatting
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=8pt,
+    captionpos=b,
+    tabsize=2,
+    showstringspaces=false
+}
+
+% TikZ Libraries
+\usepackage{tikz}
+\usetikzlibrary{arrows, arrows.meta, positioning, shapes.geometric, shapes.misc, calc, shadows}
+
+% Chapter, Section & Subsection Heading Font Specifications:
+% 16pt bold for chapter names, 14pt bold for headings (sections), 12pt for normal text
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\fontsize{16pt}{22pt}\bfseries\centering}
+  {\MakeUppercase\chaptertitlename\ \thechapter}
+  {8pt}
+  {\fontsize{16pt}{22pt}\bfseries\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{10pt}{20pt}
+
+\titleformat{\section}
+  {\fontsize{14pt}{18pt}\bfseries}
+  {\thesection}
+  {1em}
+  {}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+\titleformat{\subsection}
+  {\fontsize{13pt}{16pt}\bfseries}
+  {\thesubsection}
+  {1em}
+  {}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+\titleformat{\subsubsection}
+  {\fontsize{12pt}{15pt}\bfseries}
+  {\thesubsubsection}
+  {1em}
+  {}
+\titlespacing*{\subsubsection}{0pt}{8pt}{3pt}
+
+% Auxiliary content titles centered
+\renewcommand*\contentsname{\Large \centerline{TABLE OF CONTENTS}}
+\renewcommand*\listfigurename{\Large \centerline{LIST OF FIGURES}}
+\renewcommand*\listtablename{\Large \centerline{LIST OF TABLES}}
+
+% BibLaTeX Setup
+\usepackage[
+  backend=biber,
+  style=numeric,
+  sorting=none
+]{biblatex}
+\addbibresource{reference.bib}
+
+% Page Numbering Specification:
+% Bottom center of page in the format: Page 1 of N
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \cfoot{Page \thepage\ of \pageref{LastPage}}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+% Indent first paragraph
+\usepackage{indentfirst}
+
+% PDF and Hyperref Settings
+\usepackage[
+  bookmarks=true,
+  colorlinks=false,
+  pdfborder={0 0 0},
+  pdftitle={\projecttitle},
+  pdfauthor={\studentone, \studenttwo}
+]{hyperref}
+
+\begin{document}
+
+% Frontmatter
+\frontmatter
+\IfFileExists{titlepage.tex}{\input{titlepage}}{}
+\IfFileExists{Certificate.tex}{\input{Certificate}}{}
+\IfFileExists{Declaration.tex}{\input{Declaration}}{}
+\IfFileExists{acknowledgements.tex}{\input{acknowledgements}}{}
+\IfFileExists{abstract.tex}{\input{abstract}}{}
+
+% Table of Contents
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+\tableofcontents
+
+% List of Tables
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+\listoftables
+
+% List of Figures
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\listoffigures
+
+% Main Content (Chapters)
+\mainmatter
+\input{Chapters.tex}
+
+% Bibliography / References
+\renewcommand\bibname{REFERENCES}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{REFERENCES}
+\nocite{*}
+\printbibliography
+
+\end{document}
